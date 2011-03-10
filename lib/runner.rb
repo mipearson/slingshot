@@ -7,6 +7,6 @@ class Runner
         ENV[param] = value.to_s
       end
     end
-    system "cd #{SlingshotConfig.dir} && #{SlingshotConfig.script} 1>&2"
+    `bash -c 'cd #{SlingshotConfig.dir} && #{SlingshotConfig.script}' 2>&1`
   end
 end

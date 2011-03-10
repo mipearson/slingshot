@@ -7,19 +7,19 @@ describe Runner do
     end
     
     it "should run the script in the application directory" do
-      Runner.should_receive(:system).with('cd app_dir && my_script 1>&2')
+      Runner.should_receive(:`).with("bash -c 'cd app_dir && my_script' 2>&1")
       Runner.run_script
     end
     
     it "should set environment variables based on configuration defaults" do
-      Runner.stub!(:system)
+      Runner.stub!(:`)
       Runner.run_script
       ENV['bob'].should == 'uncle'
       ENV.should_not include 'mary'
     end
     
     it "should override configuration defaults based on passed parameters" do
-      Runner.stub!(:system)
+      Runner.stub!(:`)
       Runner.run_script("bob" => 'father', 'mary' => 'mother')
       ENV['bob'].should == 'father'
       ENV['mary'].should == 'mother'
