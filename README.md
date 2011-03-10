@@ -17,8 +17,7 @@ Slingshot doesn't deploy: deployment implies "pushing" an artefact from one loca
 another. Slingshot, using the default script, updates a repository checkout.
 
 Mount Slingshot on your Rack application server anywhere. Send it a POST request to
-perform an update to your nominated application. Send it a GET request to get a nice
-form you can use to send requests from your browser.
+perform an update to your nominated application.
 
 Parameters included in the POST body will be sent through as environment variables
 (sysops: see the "security" section) to a script. The name of the script, defaults, and
