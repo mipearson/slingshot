@@ -1,0 +1,9 @@
+script: config/rails-passenger.rb
+dir: /home/ubuntu/myapp
+arguments:
+  commit:
+  bundler: true
+  migrate: true
+  restart: true
+
+  
