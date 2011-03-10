@@ -1,8 +1,12 @@
 require 'sinatra/base'
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'env')
 
 class SlingshotApp < Sinatra::Base
+  set :logging, true
+  set :dump_errors, true
+  
   post '/' do
+    content_type :text
+    Runner.run_script(params)
   end
 end
     

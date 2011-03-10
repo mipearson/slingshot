@@ -4,3 +4,4 @@ require 'rubygems'
 require 'bundler/setup'
 
 Dir[File.join(APP_ROOT, 'lib', '*.rb')].each { |file| require file }
+Dir[File.join(APP_ROOT, 'app', '*.rb')].each { |file| require file }

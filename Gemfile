@@ -3,5 +3,5 @@ gem 'sinatra'
 
 group :dev do
   gem 'rspec'
-  gem 'rr'
+  gem 'rack-test'
 end

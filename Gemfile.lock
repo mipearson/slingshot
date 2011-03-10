@@ -3,7 +3,8 @@ GEM
   specs:
     diff-lcs (1.1.2)
     rack (1.2.1)
-    rr (1.0.2)
+    rack-test (0.5.7)
+      rack (>= 1.0)
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
       rspec-expectations (~> 2.5.0)
@@ -21,6 +22,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rr
+  rack-test
   rspec
   sinatra
