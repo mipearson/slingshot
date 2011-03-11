@@ -7,6 +7,8 @@ class Runner
         ENV[param] = value.to_s
       end
     end
-    `bash -c 'cd #{SlingshotConfig.dir} && #{SlingshotConfig.script}' 2>&1`
+    Bundler.with_clean_env do
+      `bash -c 'cd #{SlingshotConfig.dir} && #{SlingshotConfig.script}' 2>&1`
+    end
   end
 end
