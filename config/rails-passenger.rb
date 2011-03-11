@@ -8,11 +8,11 @@ def run *args
   end
 end
 
-if ENV['commit']
-  run "git pull"
-else
+if ENV['commit'] 
   run "git fetch" 
   run "git checkout #{ENV['commit']}"
+else
+  run "git pull"
 end
 
 ENV['BUNDLE_GEMFILE'] = './Gemfile'
