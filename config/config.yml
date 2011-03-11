@@ -1,5 +1,5 @@
 script: config/rails-passenger.rb
-dir: /home/ubuntu/myapp
+dir: /home/ubuntu/sports-data
 arguments:
   commit:
   bundler: true
