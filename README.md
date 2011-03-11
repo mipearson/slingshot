@@ -28,3 +28,10 @@ the directory to run the script in are configured in `config.yml`.
 Sorry, no.
 
 Well, you could lock down the mount on your Rack application server...
+
+## TODO
+
+* Turn into a Rack-mountable gem.
+* Re-add bundler (removed as bundler would then get confused on 'bundle install' in the script)
+* Add GET / to show a form to fill in deployment parameters.
+
