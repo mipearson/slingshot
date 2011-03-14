@@ -8,6 +8,10 @@ def run *args
   end
 end
 
+def enabled? var
+  ENV[var] && ENV[var] == 'true'
+end
+
 if ENV['commit'] 
   run "git fetch" 
   run "git checkout #{ENV['commit']}"
@@ -15,8 +19,8 @@ else
   run "git pull"
 end
 
-ENV['BUNDLE_GEMFILE'] = './Gemfile'
-ENV['RAILS_ENVIRONMENT'] = 'production'
-run "bundle install" if ENV['bundler'] && ENV['bundler'] == 'true'
-run "rake db:migrate" if ENV['migrate'] && ENV['migrate'] == 'true'
-run "mkdir -p tmp && touch tmp/restart.txt" if ENV['restart'] && ENV['restart'] == 'true'
+ENV['RAILS_ENVIRONMENT'] ||= 'production'
+
+run "bundle install" if enabled?('bundler')
+run "rake db:migrate" if enabled?('migrate')
+run "mkdir -p tmp && touch tmp/restart.txt" if enabled?('restart')
