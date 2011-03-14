@@ -23,6 +23,30 @@ Parameters included in the POST body will be sent through as environment variabl
 (sysops: see the "security" section) to a script. The name of the script, defaults, and
 the directory to run the script in are configured in `config.yml`.  
 
+## Installation
+
+    cd ~/
+    git clone git://github.com/mipearson/slingshot.git
+    vim slingshot/config/config.yml # change 'dir' to point to your application's root dir
+    
+### Passenger and Apache
+
+If you want to mount slingshot as `/slingshot/` under existing application (thus removing
+the need for additional virtual hosts or ports) you'll need to symlink the slingshot public directory
+under your application's public directory. Eg:
+
+    cd my_webapp/public
+    ln -si ~/slingshot/public slingshot
+    
+An example `apache.conf` file is provided for this setup. You'll need to edit it to change the `<Directory>` 
+section to point to where you cloned slingshot. Once you've done that:
+ 
+    sudo ln -si /etc/apache2/sites-available/slingshot.conf ~/slingshot/config/apache.conf
+    sudo a2ensite slingshot
+    sudo apache2ctl graceful
+
+You should then be able to send a POST request to `http://mywebapp.com/slingshot/` to update your application.
+
 ## Security
 
 Sorry, no.
