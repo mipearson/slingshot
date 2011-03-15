@@ -1,9 +1,10 @@
 class Runner
   def self.run_script params={}
-    Bundler.with_clean_env do
+    text = Bundler.with_clean_env do
       merge_env params
       `bash -c 'cd #{SlingshotConfig.dir} && #{SlingshotConfig.script}' 2>&1`
     end
+    [$?.exitstatus, text]
   end
   
   private

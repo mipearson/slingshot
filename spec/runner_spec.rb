@@ -5,11 +5,18 @@ describe Runner do
     before do
       SlingshotConfig.stub!(:script => "my_script", :dir => "app_dir")
       Runner.stub!(:merge_env)
+      system 'true' # $? = 0
     end
     
     it "should run the script in the application directory" do
       Runner.should_receive(:`).with("bash -c 'cd app_dir && my_script' 2>&1")
       Runner.run_script
+    end
+    
+    it "should return the response code and output of the script" do
+      Runner.should_receive(:`).and_return('hello')
+      system 'false' # force $? = 1
+      Runner.run_script.should == [1, 'hello']
     end
     
     it "should call merge_env with our run arguments" do
