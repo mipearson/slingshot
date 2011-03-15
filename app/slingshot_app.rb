@@ -12,7 +12,11 @@ class SlingshotApp < Sinatra::Base
       halt 403, "Unknown parameter(s) #{unknown_parameters.join(', ')}\n"
     end
       
-    Runner.run_script(params)
+    (code, text) = Runner.run_script(params)
+    if code != 0
+      halt 500, text + "\n\nScript returned a non-zero response code of #{code}.\n"
+    end
+    text
   end
 end
     
