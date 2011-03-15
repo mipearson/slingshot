@@ -2,11 +2,11 @@
 
 git pull, bundle install, rake db:migrate, touch tmp/restart.txt:
 
-`curl -d '' http://myapp.com/slingshot/`
+`curl -sS -d '' http://myapp.com/slingshot/`
 
 git fetch, git checkout release/1.1, no bundle or migrate, touch tmp/restart.txt:
 
-`curl -d commit=release/1.1 -d migrate=false -d bundle=false http://myapp.com/slingshot/`
+`curl -sS -d commit=release/1.1 -d migrate=false -d bundle=false http://myapp.com/slingshot/`
 
 ## Synopsis
 
